@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,26 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U7U-17-cqY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Square" translatesAutoresizingMaskIntoConstraints="NO" id="U7U-17-cqY">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="eBJ-X0-8rV"/>
-                                    <constraint firstAttribute="height" constant="80" id="lcl-AQ-SH9"/>
-                                    <constraint firstAttribute="width" secondItem="U7U-17-cqY" secondAttribute="height" multiplier="1:1" id="vmH-xh-MHA"/>
+                                    <constraint firstAttribute="width" constant="120" id="eBJ-X0-8rV"/>
+                                    <constraint firstAttribute="height" constant="120" id="lcl-AQ-SH9"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="eBJ-X0-8rV"/>
                                         <exclude reference="lcl-AQ-SH9"/>
-                                        <exclude reference="vmH-xh-MHA"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="eBJ-X0-8rV"/>
                                         <include reference="lcl-AQ-SH9"/>
-                                        <include reference="vmH-xh-MHA"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -47,7 +43,7 @@
                                     <action selector="OnClickRecord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Dy-SV-0PD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result is displayed here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2o-bq-Ky4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result is displayed here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2o-bq-Ky4">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -59,7 +55,9 @@
                             <constraint firstItem="76s-aq-CfO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2Z5-gO-0AZ"/>
                             <constraint firstItem="U7U-17-cqY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ECC-4g-9ip"/>
                             <constraint firstAttribute="trailing" secondItem="P2o-bq-Ky4" secondAttribute="trailing" id="JFT-ex-gC5"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="76s-aq-CfO" secondAttribute="bottom" constant="176" id="JGB-Mz-FQ1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="76s-aq-CfO" secondAttribute="bottom" constant="176" id="JGB-Mz-FQ1">
+                                <variation key="heightClass=regular-widthClass=compact" constant="75"/>
+                            </constraint>
                             <constraint firstItem="76s-aq-CfO" firstAttribute="top" secondItem="P2o-bq-Ky4" secondAttribute="bottom" constant="42" id="cdH-nA-B8G"/>
                             <constraint firstItem="P2o-bq-Ky4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dx0-Bo-Yq7"/>
                             <constraint firstItem="U7U-17-cqY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fXR-7j-xqR"/>
@@ -98,9 +96,11 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="BlackSquare" destination="U7U-17-cqY" id="ulK-3I-LiY"/>
+                        <outlet property="Drawable" destination="U7U-17-cqY" id="p86-0I-Vgw"/>
+                        <outlet property="HeightConstraint" destination="lcl-AQ-SH9" id="WEI-4g-vMR"/>
                         <outlet property="RecordButton" destination="76s-aq-CfO" id="caD-We-0TV"/>
                         <outlet property="ResultLabel" destination="P2o-bq-Ky4" id="Z9A-yC-FRi"/>
+                        <outlet property="WidthConstraint" destination="eBJ-X0-8rV" id="fLO-BV-Qwh"/>
                         <outlet property="XConstraint" destination="ECC-4g-9ip" id="g6l-N9-nnP"/>
                         <outlet property="YConstraint" destination="fXR-7j-xqR" id="kDC-DE-1cM"/>
                     </connections>
@@ -110,4 +110,7 @@
             <point key="canvasLocation" x="174" y="261"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Square" width="710" height="710"/>
+    </resources>
 </document>

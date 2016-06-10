@@ -11,12 +11,15 @@ import SpeechKit
 
 class ViewController: UIViewController, SKTransactionDelegate {
     
-    @IBOutlet weak var BlackSquare: UIImageView!
+    @IBOutlet weak var Drawable: UIImageView!
     @IBOutlet weak var RecordButton: UIButton!
     @IBOutlet weak var ResultLabel: UILabel!
     @IBOutlet weak var YConstraint: NSLayoutConstraint!
     @IBOutlet weak var XConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var WidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var HeightConstraint: NSLayoutConstraint!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -47,19 +50,55 @@ class ViewController: UIViewController, SKTransactionDelegate {
         self.ResultLabel.text = recognition.text
         
         if recognition.text == "Up" {
-            self.YConstraint.constant -= 10
+            if CGRectGetMinY(self.Drawable.frame) < 20 {
+                self.ResultLabel.text = "Cannot move image any more up"
+            }
+            else {
+                self.YConstraint.constant -= 20
+            }
         }
             
         else if ResultLabel.text! == "Right" {
-            self.XConstraint.constant += 10
+            if CGRectGetMaxX(self.Drawable.frame) > (CGRectGetMaxX(view.frame) - 20) {
+                self.ResultLabel.text = "Cannot move image any more right"
+            }
+            else {
+                self.XConstraint.constant += 20
+            }
         }
             
         else if recognition.text == "Down" {
-            self.YConstraint.constant += 10
+            if CGRectGetMaxY(self.Drawable.frame) > (CGRectGetMaxY(view.frame) - 20) {
+                self.ResultLabel.text = "Cannot move image any more down"
+            }
+            else {
+                self.YConstraint.constant += 20
+            }
         }
             
         else if recognition.text == "Left" {
-            self.XConstraint.constant -= 10
+            if CGRectGetMinX(self.Drawable.frame) < 20 {
+                self.ResultLabel.text = "Cannot move image any more left"
+            }
+            else {
+                self.XConstraint.constant -= 20
+            }
+        }
+        
+        //Shape changing not working (View keeps setting to original view after recording)
+        else if recognition.text == "Circle" {
+            print("In Circle")
+            self.Drawable.image = UIImage(named: "circle")
+        }
+        
+        else if recognition.text == "Bigger" {
+            self.WidthConstraint.constant += 30
+            self.HeightConstraint.constant += 30
+        }
+        
+        else if recognition.text == "Smaller" {
+            self.WidthConstraint.constant -= 30
+            self.HeightConstraint.constant -= 30
         }
         
         self.RecordButton.setTitle("Start Listening", forState: UIControlState.Normal)
